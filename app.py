@@ -27,9 +27,9 @@ def create_app(test_config=None):
 
     def db():
         if 'db' not in g:
-            options = dict(host=os.getenv('MYSQL_HOST', '127.0.0.1'), port=int(os.getenv('MYSQL_PORT', '3306')),
-                           user=os.getenv('MYSQL_USER', 'root'), password=os.getenv('MYSQL_PASSWORD', ''),
-                           database=os.getenv('MYSQL_DATABASE', 'stayclub'), charset='utf8mb4',
+            options = dict(host=os.getenv('MYSQL_HOST', 'brkyqfejc6i2lbjrf1ll-mysql.services.clever-cloud.com'), port=int(os.getenv('MYSQL_PORT', '3306')),
+                           user=os.getenv('MYSQL_USER', 'utge9pzuhyoz1tdk'), password=os.getenv('MYSQL_PASSWORD', 'oEmzUXyN2IzA1o691jRA'),
+                           database=os.getenv('MYSQL_DATABASE', 'brkyqfejc6i2lbjrf1ll'), charset='utf8mb4',
                            cursorclass=pymysql.cursors.DictCursor, autocommit=False, connect_timeout=10)
             if os.getenv('MYSQL_SSL_CA'):
                 options['ssl'] = {'ca': os.environ['MYSQL_SSL_CA'], 'check_hostname': True}
