@@ -1,0 +1,44 @@
+[
+  {
+    "file": "stay-1.jpg",
+    "url": "https://images.unsplash.com/photo-1711110066231-cb235d6e117e?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "Zoshua Colah",
+    "license": "Unsplash License",
+    "bytes": 197128
+  },
+  {
+    "file": "stay-2.jpg",
+    "url": "https://images.unsplash.com/photo-1711114378455-b1f479d94a19?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "Zoshua Colah",
+    "license": "Unsplash License",
+    "bytes": 183805
+  },
+  {
+    "file": "stay-3.jpg",
+    "url": "https://images.unsplash.com/photo-1753569633042-473677bce058?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "Ryan Klaus",
+    "license": "Unsplash License",
+    "bytes": 182488
+  },
+  {
+    "file": "stay-4.jpg",
+    "url": "https://images.unsplash.com/photo-1750271329214-a7dbce880e85?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "sidath vimukthi",
+    "license": "Unsplash License",
+    "bytes": 182813
+  },
+  {
+    "file": "stay-5.jpg",
+    "url": "https://images.unsplash.com/photo-1711110066231-cb235d6e117e?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "Zoshua Colah",
+    "license": "Unsplash License",
+    "bytes": 197128
+  },
+  {
+    "file": "stay-6.jpg",
+    "url": "https://images.unsplash.com/photo-1643671940359-3ab293feaf56?auto=format&fit=crop&fm=jpg&w=1000&q=85",
+    "photographer": "Moriah Bender",
+    "license": "Unsplash License",
+    "bytes": 133062
+  }
+]

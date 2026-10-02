@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Bookings{% endblock %}
+{% block content %}
+<section class="listing-section wishlist">
+  <div class="section-heading"><div><p class="eyebrow">YOUR GETAWAYS</p><h1>Bookings</h1><p>All your confirmed stays, in one place.</p></div></div>
+  {% if bookings %}<div class="bookings-list">{% for booking in bookings %}
+    {% set nights = (booking.check_out - booking.check_in).days %}
+    <article class="booking-card">
+      <a href="{{ url_for('stay_detail', stay_id=booking.stay_id) }}"><img src="{{ url_for('static', filename='images/' + booking.image) }}" alt="{{ booking.title }}" loading="lazy"></a>
+      <div><span class="confirmed">Confirmed · #{{ booking.id }}</span><h2><a href="{{ url_for('stay_detail', stay_id=booking.stay_id) }}">{{ booking.title }}</a></h2><p class="muted">{{ booking.location }}</p>
+      <p><b>Check-in:</b> {{ booking.check_in.strftime('%d %b %Y') }} · <b>Check-out:</b> {{ booking.check_out.strftime('%d %b %Y') }}</p>
+      <p>{{ booking.adults }} adult{{ 's' if booking.adults != 1 }} · {{ booking.children }} child{{ 'ren' if booking.children != 1 }} (under 13)</p>
+      <p>{{ nights + 1 }} days · {{ nights }} night{{ 's' if nights != 1 }}</p>
+      <p class="price"><strong>₹{{ '{:,}'.format(booking.total_price) }} total</strong> · ₹{{ '{:,}'.format(booking.nightly_price) }} / night</p></div>
+    </article>
+  {% endfor %}</div>{% else %}<div class="empty"><h2>Your next trip starts here</h2><p>You haven’t booked a stay yet.</p><a class="primary" href="{{ url_for('home') }}">Explore stays</a></div>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ stay.title }}{% endblock %}
+{% block content %}
+<div class="stay-detail">
+  <a class="back-link" href="{{ url_for('home') }}">Back to stays</a>
+  <p class="eyebrow">YOUR NEXT GETAWAY</p>
+  <h1>{{ stay.title }}</h1>
+  <p class="detail-location">{{ stay.location }} · ★ {{ stay.rating }}</p>
+  <img class="detail-photo" src="{{ url_for('static', filename='images/' + stay.image) }}" alt="{{ stay.title }} — illustrative property photo">
+  <form id="booking-form" method="post" data-price="{{ stay.price }}" data-capacity="{{ capacity }}">
+    <input type="hidden" name="csrf_token" value="{{ session.csrf }}">
+    <input type="hidden" name="booking_token" value="{{ booking_token }}">
+    <section class="detail-section" aria-labelledby="trip-heading">
+      <h2 id="trip-heading">Plan your stay</h2>
+      <p>Up to {{ capacity }} guests. Children count toward the guest limit.</p>
+      {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
+      <div class="booking-fields">
+        <label>Adults <span>Ages 13 and above</span><input id="adults" name="adults" type="number" min="1" max="{{ capacity }}" value="{{ values.adults }}" required></label>
+        <label>Children <span>Ages 0–12 (under 13)</span><input id="children" name="children" type="number" min="0" max="{{ capacity - 1 }}" value="{{ values.children }}" required></label>
+        <label>Check-in <input id="check-in" name="check_in" type="date" min="{{ today }}" value="{{ values.check_in }}" required></label>
+        <label>Check-out <input id="check-out" name="check_out" type="date" min="{{ today }}" value="{{ values.check_out }}" required></label>
+      </div>
+      <p id="booking-hint" aria-live="polite">Choose your dates to see the total price.</p>
+    </section>
+    <section class="detail-section" aria-labelledby="room-heading">
+      <h2 id="room-heading">Room details</h2>
+      <p>{{ stay.description }}</p>
+      <p>The entire property is yours. ₹{{ '{:,}'.format(stay.price) }} per night for the whole stay, with no extra guest fees.</p>
+    </section>
+    <section class="detail-section" aria-labelledby="facilities-heading">
+      <h2 id="facilities-heading">Property facilities</h2>
+      <ul class="facilities">{% for facility in facilities %}<li>{{ facility }}</li>{% endfor %}</ul>
+      <p class="muted">Facilities shown are part of this sample listing.</p>
+    </section>
+    <div class="booking-bar">
+      <div aria-live="polite"><strong id="booking-total">₹{{ '{:,}'.format(stay.price) }} / night</strong><span id="booking-duration">Select check-in and check-out</span></div>
+      <button class="primary" id="book-button" type="submit">{{ 'Book stay' if g.user else 'Log in to book' }}</button>
+    </div>
+    <noscript><p>Your total is the nightly rate multiplied by the number of nights. Your confirmation will show the final total.</p></noscript>
+  </form>
+</div>
+<script src="{{ url_for('static', filename='booking.js') }}" defer></script>
+{% endblock %}

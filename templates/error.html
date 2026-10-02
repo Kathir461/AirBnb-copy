@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block title %}{{ code }}{% endblock %}{% block content %}<section class="empty error-page"><p class="eyebrow">{{ code }}</p><h1>{{ 'Page not found' if code == 404 else 'A little pause in the journey' }}</h1><p>{{ message }}</p><a href="{{ url_for('home') }}" class="primary">Back to home</a></section>{% endblock %}
